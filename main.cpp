@@ -20,34 +20,27 @@ using std::vector;
 
 
 int main() {
-    ostringstream stream;
+  ostringstream stream;
 
-    ofstream post_stream("PStest.ps");
-    if (!post_stream.is_open()) {
-        cout << "It worked" << endl;
-        return 0;
-    }
+  ofstream post_stream("PStest.ps");
+  if (!post_stream.is_open()) {
+      cout << "It worked" << endl;
+      return 0;
+  }
 
-    Square a(1, 1, 1, "a");
-    a.getPostScript(stream);
+  Square a(1, 1, 1, "a");
+  a.getPostScript(stream);
+  a.rotate(45, stream, a)
 
-    Circle b(1, 3, 3, "b");
-    b.getPostScript(stream);
-
-    Triangle c(1, 4, 4, "c");
-    c.getPostScript(stream);
-
-
-    stream << "a" << endl;
-    stream << "b" << endl;
-    stream << "c" << endl;
+  stream << "a" << endl;
 
 
 
-    stream << "showpage" << endl;
-    post_stream << stream.str();
-    post_stream.close();
+
+  stream << "showpage" << endl;
+  post_stream << stream.str();
+  post_stream.close();
 
 
-    return 0;
+  return 0;
 }
